@@ -9,3 +9,7 @@ GRANT ALL PRIVILEGES ON SCHEMA products TO product_service;
 CREATE SCHEMA notifications;
 CREATE USER notification_service WITH PASSWORD 'notification_service';
 GRANT ALL PRIVILEGES ON SCHEMA notifications TO notification_service;
+
+CREATE SCHEMA keycloak;
+CREATE USER keycloak WITH PASSWORD 'keycloak';
+GRANT ALL PRIVILEGES ON SCHEMA keycloak TO keycloak;
