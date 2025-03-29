@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "ee9c7c49-2a7e-44aa-86d6-d1f2cb79eed5",
+		"_postman_id": "4c11546e-d8ca-498c-b4fb-4d461ddcf960",
 		"name": "ElectronicsStore",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "40788222"
+		"_exporter_id": "37076672"
 	},
 	"item": [
 		{
@@ -13,41 +13,23 @@
 					"name": "User",
 					"item": [
 						{
-							"name": "Register",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"login\": \"login\",\r\n    \"password\": \"12345678\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{gatewayUri}}/api/v1/users",
-									"host": [
-										"{{gatewayUri}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"users"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Edit User",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "PUT",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"{{userId}}\",\r\n    \"name\": \"name\",\r\n    \"surname\": \"surname\",\r\n    \"patronymic\": \"patronymic\",\r\n    \"gender\": true,\r\n    \"birthdate\": \"2000.01.01\",\r\n    \"phoneNumber\": \"+79115467299\",\r\n    \"email\": \"email@email\"\r\n}",
+									"raw": "{\r\n    \"name\": \"name\",\r\n    \"surname\": \"surname\",\r\n    \"patronymic\": \"patronymic\",\r\n    \"gender\": true,\r\n    \"birthdate\": \"2000.01.01\",\r\n    \"phoneNumber\": \"+79115467299\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -71,18 +53,27 @@
 						{
 							"name": "Get User",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{gatewayUri}}/api/v1/users/{{userId}}",
+									"raw": "{{gatewayUri}}/api/v1/users",
 									"host": [
 										"{{gatewayUri}}"
 									],
 									"path": [
 										"api",
 										"v1",
-										"users",
-										"{{userId}}"
+										"users"
 									]
 								}
 							},
@@ -91,18 +82,27 @@
 						{
 							"name": "Delete User",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{gatewayUri}}/api/v1/users/{{userId}}",
+									"raw": "{{gatewayUri}}/api/v1/users",
 									"host": [
 										"{{gatewayUri}}"
 									],
 									"path": [
 										"api",
 										"v1",
-										"users",
-										"{{userId}}"
+										"users"
 									]
 								}
 							},
@@ -116,14 +116,18 @@
 						{
 							"name": "Get Balance",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
-								"header": [
-									{
-										"key": "User-Id",
-										"value": "{{userId}}",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"url": {
 									"raw": "{{gatewayUri}}/api/v1/users/balance",
 									"host": [
@@ -142,14 +146,18 @@
 						{
 							"name": "Deposit",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
-								"header": [
-									{
-										"key": "User-Id",
-										"value": "{{userId}}",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"body": {
 									"mode": "raw",
 									"raw": "{\r\n    \"amount\": 123.456\r\n}",
@@ -178,17 +186,21 @@
 						{
 							"name": "Payment",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
-								"header": [
-									{
-										"key": "User-Id",
-										"value": "{{userId}}",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"amount\": 123.34\r\n}",
+									"raw": "{\r\n    \"amount\": 123.456\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -224,6 +236,16 @@
 						{
 							"name": "Upsert Product",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [],
 								"body": {
@@ -254,6 +276,16 @@
 						{
 							"name": "Delete Product",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "DELETE",
 								"header": [],
 								"url": {
@@ -276,6 +308,16 @@
 						{
 							"name": "Add Category",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "PUT",
 								"header": [],
 								"body": {
@@ -311,6 +353,9 @@
 						{
 							"name": "Get Product by id",
 							"request": {
+								"auth": {
+									"type": "noauth"
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -334,6 +379,9 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "noauth"
+								},
 								"method": "GET",
 								"header": [],
 								"body": {
@@ -367,14 +415,18 @@
 						{
 							"name": "Add to Basket",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
-								"header": [
-									{
-										"key": "User-Id",
-										"value": "{{userId}}",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"url": {
 									"raw": "{{gatewayUri}}/api/v1/products/basket?product-id={{productId}}&quantity=1",
 									"host": [
@@ -403,14 +455,18 @@
 						{
 							"name": "Get Basket",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
-								"header": [
-									{
-										"key": "User-Id",
-										"value": "{{userId}}",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"url": {
 									"raw": "{{gatewayUri}}/api/v1/products/basket",
 									"host": [
@@ -429,16 +485,20 @@
 						{
 							"name": "Remove from Basket",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "DELETE",
-								"header": [
-									{
-										"key": "User-Id",
-										"value": "{{userId}}",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"url": {
-									"raw": "{{gatewayUri}}/api/v1/products/basket?product-id=ed26c1cc-92cb-4670-b6be-cee460ab5ed7",
+									"raw": "{{gatewayUri}}/api/v1/products/basket?product-id={{productId}}",
 									"host": [
 										"{{gatewayUri}}"
 									],
@@ -451,7 +511,7 @@
 									"query": [
 										{
 											"key": "product-id",
-											"value": "ed26c1cc-92cb-4670-b6be-cee460ab5ed7"
+											"value": "{{productId}}"
 										}
 									]
 								}
@@ -466,14 +526,18 @@
 						{
 							"name": "Make Purchase",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
-								"header": [
-									{
-										"key": "User-Id",
-										"value": "{{userId}}",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"url": {
 									"raw": "{{gatewayUri}}/api/v1/products/purchases?product-id={{productId}}&quantity=1",
 									"host": [
@@ -502,14 +566,18 @@
 						{
 							"name": "Make Purchase from basket",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
-								"header": [
-									{
-										"key": "User-Id",
-										"value": "{{userId}}",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"url": {
 									"raw": "{{gatewayUri}}/api/v1/products/purchases/basket?product-id={{productId}}",
 									"host": [
@@ -535,14 +603,18 @@
 						{
 							"name": "Get Purchases",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
-								"header": [
-									{
-										"key": "User-Id",
-										"value": "{{userId}}",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"url": {
 									"raw": "{{gatewayUri}}/api/v1/products/purchases",
 									"host": [
@@ -561,14 +633,18 @@
 						{
 							"name": "Get Purchase by id",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
-								"header": [
-									{
-										"key": "User-Id",
-										"value": "{{userId}}",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"url": {
 									"raw": "{{gatewayUri}}/api/v1/products/purchases/{{purchaseId}}",
 									"host": [
@@ -595,14 +671,18 @@
 				{
 					"name": "Get Notifications",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "User-Id",
-								"value": "{{userId}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "{{gatewayUri}}/api/v1/notifications",
 							"host": [
@@ -620,14 +700,18 @@
 				{
 					"name": "Get Notifications by id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "User-Id",
-								"value": "{{userId}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "{{gatewayUri}}/api/v1/notifications/{{notificationId}}",
 							"host": [
@@ -675,7 +759,7 @@
 			"type": "string"
 		},
 		{
-			"key": "userId",
+			"key": "token",
 			"value": "",
 			"type": "string"
 		},
