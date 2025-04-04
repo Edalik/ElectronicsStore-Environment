@@ -283,5 +283,3 @@ volumes:
   keycloak_data:
   elasticsearch_data:
     driver: local
-  elasticsearch_data:
-    driver: local
